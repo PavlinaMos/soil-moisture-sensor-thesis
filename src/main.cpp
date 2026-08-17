@@ -25,6 +25,9 @@ WiFiConnectionHandler *cloudConnection = nullptr;
 
 bool connectToWifi() {
   WiFi.mode(WIFI_STA);
+  // Experimental mode: forget the previous network on every boot so the
+  // configuration portal is always used for the current run.
+  wifiManager.resetSettings();
   wifiManager.setHostname("ESP32-Meter");
   wifiManager.setConnectTimeout(20);
   wifiManager.setConfigPortalTimeout(300);
