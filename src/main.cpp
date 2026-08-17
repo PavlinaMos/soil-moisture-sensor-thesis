@@ -2,6 +2,7 @@
 #include <SPI.h>
 #include <WiFi.h>
 #include <WiFiManager.h>
+#include <Preferences.h>
 
 #include "AD9833.h"
 #include <Adafruit_ADS1X15.h>
@@ -22,25 +23,113 @@ AD9833 AD2(4, myspi);
 Adafruit_ADS1115 ads;
 WiFiManager wifiManager;
 WiFiConnectionHandler *cloudConnection = nullptr;
+Preferences knownNetworks;
+
+constexpr char NETWORKS_NAMESPACE[] = "known-wifi";
+constexpr uint8_t MAX_KNOWN_NETWORKS = 5;
+
+String ssidKey(uint8_t index) { return "ssid" + String(index); }
+String passKey(uint8_t index) { return "pass" + String(index); }
+
+bool isVisibleNetwork(const String &ssid, int networkCount) {
+  for (int i = 0; i < networkCount; ++i) {
+    if (WiFi.SSID(i) == ssid) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool connectToKnownNetwork() {
+  const int networkCount = WiFi.scanNetworks();
+  if (networkCount <= 0) {
+    Serial.println("No known Wi-Fi networks are visible.");
+    return false;
+  }
+
+  knownNetworks.begin(NETWORKS_NAMESPACE, true);
+  for (uint8_t i = 0; i < MAX_KNOWN_NETWORKS; ++i) {
+    String ssid = knownNetworks.getString(ssidKey(i).c_str(), "");
+    String pass = knownNetworks.getString(passKey(i).c_str(), "");
+    if (ssid.isEmpty() || !isVisibleNetwork(ssid, networkCount)) {
+      continue;
+    }
+
+    Serial.print("Trying known Wi-Fi: ");
+    Serial.println(ssid);
+    WiFi.begin(ssid.c_str(), pass.c_str());
+    const unsigned long deadline = millis() + 15000;
+    while (WiFi.status() != WL_CONNECTED && millis() < deadline) {
+      delay(250);
+    }
+    if (WiFi.status() == WL_CONNECTED) {
+      knownNetworks.end();
+      return true;
+    }
+    WiFi.disconnect();
+  }
+  knownNetworks.end();
+  return false;
+}
+
+void rememberNetwork(const String &ssid, const String &pass) {
+  knownNetworks.begin(NETWORKS_NAMESPACE, false);
+  uint8_t targetSlot = MAX_KNOWN_NETWORKS;
+  for (uint8_t i = 0; i < MAX_KNOWN_NETWORKS; ++i) {
+    String storedSsid = knownNetworks.getString(ssidKey(i).c_str(), "");
+    if (storedSsid == ssid) {
+      targetSlot = i;
+      break;
+    }
+    if (storedSsid.isEmpty() && targetSlot == MAX_KNOWN_NETWORKS) {
+      targetSlot = i;
+    }
+  }
+  if (targetSlot == MAX_KNOWN_NETWORKS) {
+    targetSlot = 0;
+  }
+  knownNetworks.putString(ssidKey(targetSlot).c_str(), ssid);
+  knownNetworks.putString(passKey(targetSlot).c_str(), pass);
+  knownNetworks.end();
+}
 
 bool connectToWifi() {
   WiFi.mode(WIFI_STA);
-  // Experimental mode: forget the previous network on every boot so the
-  // configuration portal is always used for the current run.
+  // Store our own list of profiles, rather than the single ESP Wi-Fi profile.
   wifiManager.resetSettings();
   wifiManager.setHostname("ESP32-Meter");
   wifiManager.setConnectTimeout(20);
   wifiManager.setConfigPortalTimeout(300);
 
-  // Uses saved credentials. If none work, it opens ESP32-Meter-Setup.
-  if (!wifiManager.autoConnect("ESP32-Meter-Setup", "configure-me")) {
+  if (!connectToKnownNetwork()) {
+    Serial.println("Opening Wi-Fi setup portal.");
+    if (!wifiManager.startConfigPortal("ESP32-Meter-Setup", "configure-me")) {
+      Serial.println("Wi-Fi setup timed out; restarting.");
+      ESP.restart();
+      return false;
+    }
+
+    String ssid = wifiManager.getWiFiSSID(false);
+    String pass = wifiManager.getWiFiPass(false);
+    rememberNetwork(ssid, pass);
+  }
+
+  if (WiFi.status() != WL_CONNECTED) {
     Serial.println("Wi-Fi setup timed out; restarting.");
     ESP.restart();
     return false;
   }
 
-  String ssid = wifiManager.getWiFiSSID(false);
-  String pass = wifiManager.getWiFiPass(false);
+  String ssid = WiFi.SSID();
+  knownNetworks.begin(NETWORKS_NAMESPACE, true);
+  String pass;
+  for (uint8_t i = 0; i < MAX_KNOWN_NETWORKS; ++i) {
+    if (knownNetworks.getString(ssidKey(i).c_str(), "") == ssid) {
+      pass = knownNetworks.getString(passKey(i).c_str(), "");
+      break;
+    }
+  }
+  knownNetworks.end();
   cloudConnection = new WiFiConnectionHandler(ssid.c_str(), pass.c_str());
 
   Serial.print("Wi-Fi connected: ");
