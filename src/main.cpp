@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <SPI.h>
 #include <WiFi.h>
+#include <WiFiManager.h>
 
 #include "AD9833.h"
 #include <Adafruit_ADS1X15.h>
@@ -19,24 +20,29 @@ SPIClass *myspi = new SPIClass(VSPI);
 AD9833 AD(5, myspi);
 AD9833 AD2(4, myspi);
 Adafruit_ADS1115 ads;
+WiFiManager wifiManager;
+WiFiConnectionHandler *cloudConnection = nullptr;
 
 bool connectToWifi() {
   WiFi.mode(WIFI_STA);
-  WiFi.begin(SECRET_SSID, SECRET_PASS);
+  wifiManager.setHostname("ESP32-Meter");
+  wifiManager.setConnectTimeout(20);
+  wifiManager.setConfigPortalTimeout(300);
 
-  const unsigned long deadline = millis() + 20000;
-  while (WiFi.status() != WL_CONNECTED && millis() < deadline) {
-    delay(250);
+  // Uses saved credentials. If none work, it opens ESP32-Meter-Setup.
+  if (!wifiManager.autoConnect("ESP32-Meter-Setup", "configure-me")) {
+    Serial.println("Wi-Fi setup timed out; restarting.");
+    ESP.restart();
+    return false;
   }
 
-  if (WiFi.status() == WL_CONNECTED) {
-    Serial.print("Wi-Fi connected: ");
-    Serial.println(WiFi.localIP());
-    return true;
-  }
+  String ssid = wifiManager.getWiFiSSID(false);
+  String pass = wifiManager.getWiFiPass(false);
+  cloudConnection = new WiFiConnectionHandler(ssid.c_str(), pass.c_str());
 
-  Serial.println("Wi-Fi connection timed out.");
-  return false;
+  Serial.print("Wi-Fi connected: ");
+  Serial.println(WiFi.localIP());
+  return true;
 }
 
 void cloudDelay(unsigned long durationMs) {
@@ -53,7 +59,7 @@ void setup() {
 
   initProperties();
   setDebugMessageLevel(4);
-  ArduinoCloud.begin(ArduinoIoTPreferredConnection, true, "mqtts-up.iot.arduino.cc", 8884);
+  ArduinoCloud.begin(*cloudConnection, true, "mqtts-up.iot.arduino.cc", 8884);
   ArduinoCloud.printDebugInfo();
 
   myspi->begin();
