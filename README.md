@@ -3,14 +3,14 @@
 This project runs on an ESP32 NodeMCU-32S. The sensor currently calculates the inserted values of R and C and calculates the impedance. The user can connect an R, C, or a parallel RC element and the sensor measures and publishes resistance (`RP`) and capacitance (`CP`) to Arduino Cloud. 
 It also provides Wi-Fi setup using the WiFi Manager library, which allows the user to connect to the WiFi without hard coding the credentials. stores the credentials of previously connected networks. On startup, the device automatically searches for a known Wi-Fi network and connects to it. If no saved network is found, it switches to Access Point (AP) mode and launches a captive portal, allowing the user to enter the credentials of a new Wi-Fi network, which are then saved for future use.
 
-## Analog Parts
+## Analog Parts Used
 
 1. LTC6268
 2. AD8130
 3. AD8066
 4. ADG733
 
-## Modules
+## Modules Used
 
 1. AD9833 (Waveform Generator)
 2. ADS1115 (ADC)
