@@ -57,14 +57,14 @@ Install:
 2. The PlatformIO IDE extension for VS Code
 3. The CP210x USB-to-UART driver if the ESP32 does not appear as a Windows COM port
 
-Open the `firmware/` folder in VS Code. PlatformIO reads
-`firmware/platformio.ini` and installs the required ESP32 toolchain and
-libraries automatically during the first build.
+Open the `firmware/` folder in VS Code. PlatformIO reads the exact toolchain and
+library versions pinned in `firmware/platformio.ini`.
 
 ## Configure private secrets
 
-Create or edit `firmware/include/arduino_secrets.h` locally. It must define the
-Arduino Cloud device key. Never commit this file or share its contents.
+Copy `firmware/include/arduino_secrets.example.h` to
+`firmware/include/arduino_secrets.h`, then add the matching Arduino Cloud
+device key. Never commit this file or share its contents.
 
 ```cpp
 #pragma once
@@ -89,13 +89,11 @@ In VS Code, use the PlatformIO buttons in the bottom status bar:
 The first build downloads and compiles dependencies, so it takes longer. A
 successful build ends with `SUCCESS`.
 
-You can also build from a PowerShell terminal opened at the repository root:
+From a PlatformIO Core terminal, you can also build from the repository root:
 
 ```powershell
 pio run --project-dir firmware
 ```
-
-Alternatively, open a terminal inside `firmware/` and run `pio run`.
 
 To upload:
 
@@ -111,9 +109,10 @@ and Arduino Cloud connection messages.
 ## Wi-Fi provisioning
 
 When no saved network can connect, the ESP32 creates the protected setup access
-point `ESP32 Meter Setup`. Connect to it and use the captive portal to select a
-2.4 GHz Wi-Fi network. The current implementation stores up to five profiles;
-when the list is full, the oldest slot is replaced.
+point `ESP32-Meter-Setup`. Connect with password `configure-me` and use the
+captive portal (or `192.168.4.1`) to select a 2.4 GHz Wi-Fi network. The current
+implementation stores up to five profiles; when the list is full, slot 0 is
+replaced.
 
 ## Arduino Cloud
 
