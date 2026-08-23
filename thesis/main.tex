@@ -1,0 +1,38 @@
+% !TeX program = pdflatex
+\documentclass{ihu-thesis}
+
+\input{metadata}
+
+\begin{document}
+
+\input{frontmatter/title-page}
+\frontmatter
+\pagestyle{frontmatter}
+\input{frontmatter/declaration}
+\input{frontmatter/abstract-gr}
+\input{frontmatter/abstract-en}
+
+\tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{Κατάλογος Σχημάτων}
+\listoffigures
+\clearpage
+\addcontentsline{toc}{chapter}{Κατάλογος Πινάκων}
+\listoftables
+\clearpage
+
+\mainmatter
+\pagestyle{fancy}
+\input{chapters/01-introduction}
+\input{chapters/02-theoretical-background}
+\input{chapters/03-electrical-characteristics}
+\input{chapters/04-sensor-design}
+
+\backmatter
+\begingroup
+\small
+\setlength{\parindent}{0pt}
+\input{bibliography/references-static}
+\endgroup
+
+\end{document}

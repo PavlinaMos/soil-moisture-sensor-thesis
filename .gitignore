@@ -1,3 +1,14 @@
+# PlatformIO and local editor state
 .pio/
 .vscode/
 include/arduino_secrets.h
+
+# KiCad local state, locks, and automatic backups
+*.kicad_prl
+*.lck
+~*.kicad_*
+*-backups/
+
+# Common operating-system files
+.DS_Store
+Thumbs.db
