@@ -1,4 +1,4 @@
-# R analysis scripts
+# Impedance spectroscopy analysis
 
 These scripts were used to process impedance measurements and create plots for
 the thesis:

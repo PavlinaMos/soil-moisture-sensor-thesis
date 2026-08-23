@@ -13,16 +13,17 @@ This repository contains the complete soil-moisture measurement project:
 
 ```text
 .
-|-- platformio.ini              PlatformIO board, framework, and library settings
-|-- src/                        ESP32 application code
-|-- include/                    Arduino Cloud definitions and local secrets
-|-- analysis/r/                 R analysis scripts and usage notes
-|-- hardware/kicad/soil-board/  KiCad schematic, PCB, and project files
-`-- thesis/                     LaTeX thesis sources, bibliography, and figures
+|-- firmware/                           ESP32 PlatformIO project
+|   |-- platformio.ini                  Board, framework, and library settings
+|   |-- src/                            Application code
+|   `-- include/                        Cloud definitions and local secrets
+|-- analysis/impedance_spectroscopy/    R analysis scripts and usage notes
+|-- PCB/kicad/soil-board/               KiCad schematic, PCB, and project files
+`-- thesis/                             LaTeX sources, bibliography, and figures
 ```
 
-The firmware remains at the repository root so the existing VS Code and
-PlatformIO workflow continues to work without configuration changes.
+The firmware is a self-contained PlatformIO project under `firmware/`. Open
+that directory directly in VS Code when building or uploading the ESP32 code.
 
 ## Firmware overview
 
@@ -56,14 +57,14 @@ Install:
 2. The PlatformIO IDE extension for VS Code
 3. The CP210x USB-to-UART driver if the ESP32 does not appear as a Windows COM port
 
-Open this repository folder in VS Code. PlatformIO reads `platformio.ini` and
-installs the required ESP32 toolchain and libraries automatically during the
-first build.
+Open the `firmware/` folder in VS Code. PlatformIO reads
+`firmware/platformio.ini` and installs the required ESP32 toolchain and
+libraries automatically during the first build.
 
 ## Configure private secrets
 
-Create or edit `include/arduino_secrets.h` locally. It must define the Arduino
-Cloud device key. Never commit this file or share its contents.
+Create or edit `firmware/include/arduino_secrets.h` locally. It must define the
+Arduino Cloud device key. Never commit this file or share its contents.
 
 ```cpp
 #pragma once
@@ -88,11 +89,13 @@ In VS Code, use the PlatformIO buttons in the bottom status bar:
 The first build downloads and compiles dependencies, so it takes longer. A
 successful build ends with `SUCCESS`.
 
-You can also build from a PowerShell terminal opened in this folder:
+You can also build from a PowerShell terminal opened at the repository root:
 
 ```powershell
-pio run
+pio run --project-dir firmware
 ```
+
+Alternatively, open a terminal inside `firmware/` and run `pio run`.
 
 To upload:
 
@@ -120,15 +123,17 @@ their time history. Cloud retention depends on the Arduino Cloud plan.
 
 ## Hardware design
 
-Open `hardware/kicad/soil-board/SoilBoard.kicad_pro` in KiCad. See the
-[hardware notes](hardware/kicad/soil-board/README.md) for the included sources
-and the archive cleanup performed during import.
+Open `PCB/kicad/soil-board/SoilBoard.kicad_pro` in KiCad. See the
+[PCB notes](PCB/kicad/soil-board/README.md) for the included sources and the
+archive cleanup performed during import.
 
 ## Data analysis
 
-The R scripts are under `analysis/r/`. They cover mean-squared error,
-Nyquist plots, sampled Nyquist comparisons, and phase/impedance plots. See the
-[analysis notes](analysis/r/README.md) for package and dataset requirements.
+The R scripts are under `analysis/impedance_spectroscopy/`. They cover
+mean-squared error, Nyquist plots, sampled Nyquist comparisons, and
+phase/impedance plots. See the
+[analysis notes](analysis/impedance_spectroscopy/README.md) for package and
+dataset requirements.
 
 ## Thesis
 
