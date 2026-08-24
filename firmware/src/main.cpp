@@ -208,7 +208,7 @@ void loop() {
   Cp_nF = Cp * pow(10, 9);
 
   rp = Rp;
-  vmag1 = Cp_nF;
+  cp = Cp_nF;
   ArduinoCloud.update();
 
   Serial.println("-----------------------------------------------------------");
