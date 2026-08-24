@@ -1,3 +1,5 @@
+.vscode/
+
 # PlatformIO and local editor state
 /firmware/.pio/
 /firmware/.vscode/
@@ -8,21 +10,3 @@
 *.lck
 ~*.kicad_*
 *-backups/
-
-# LaTeX build output
-*.aux
-*.bbl
-*.blg
-*.fdb_latexmk
-*.fls
-*.lof
-*.log
-*.lot
-*.out
-*.synctex.gz
-*.toc
-/thesis/main.pdf
-
-# Common operating-system files
-.DS_Store
-Thumbs.db
