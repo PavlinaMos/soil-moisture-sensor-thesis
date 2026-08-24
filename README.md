@@ -1,6 +1,6 @@
 # Soil Moisture Sensor Thesis
 
-This repository contains the omplete soil-moisture measurement project:
+This repository contains the soil-moisture measurement project:
 
 - ESP32 firmware for impedance measurement, Wi-Fi provisioning, and Arduino Cloud publishing.
 - KiCad schematic and PCB sources for the measurement hardware.
