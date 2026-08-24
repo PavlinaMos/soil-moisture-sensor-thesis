@@ -123,9 +123,7 @@ archive cleanup performed during import.
 
 The R scripts are under `analysis/impedance_spectroscopy/`. They cover
 mean-squared error, Nyquist plots, sampled Nyquist comparisons, and
-phase/impedance plots. See the
-[analysis notes](analysis/impedance_spectroscopy/README.md) for package and
-dataset requirements.
+phase/impedance plots.
 
 ## Thesis
 
