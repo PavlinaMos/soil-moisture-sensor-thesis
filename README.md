@@ -22,8 +22,7 @@ This repository contains the omplete soil-moisture measurement project:
 |-- thesis/                             LaTeX sources, bibliography, and figures
 ```
 
-The firmware is a self-contained PlatformIO project under `firmware/`. Open
-that directory directly in VS Code when building or uploading the ESP32 code.
+
 
 ## Firmware overview
 
@@ -31,9 +30,9 @@ The firmware targets an ESP32 NodeMCU-32S. It drives the measurement circuit,
 calculates resistance (`RP`) and capacitance (`CP`), and publishes the results
 to Arduino Cloud.
 
-WiFiManager handles Wi-Fi setup without hard-coded network credentials. Known
+WiFiManager handles Wi-Fi setup without needing hard-coded network credentials. Known
 networks are stored in the ESP32's non-volatile memory. At startup, the device
-tries up to five saved networks and opens a captive setup portal when none can
+tries to connect to saved networks and opens a setup portal when none can
 be reached.
 
 ### Analog parts
@@ -62,9 +61,8 @@ library versions pinned in `firmware/platformio.ini`.
 
 ## Configure private secrets
 
-Copy `firmware/include/arduino_secrets.example.h` to
-`firmware/include/arduino_secrets.h`, then add the matching Arduino Cloud
-device key. Never commit this file or share its contents.
+Copy `firmware/include/arduino_secrets.h`, then add the matching Arduino Cloud
+device key. Don't commit this file or share its contents.
 
 ```cpp
 #pragma once
@@ -89,19 +87,14 @@ In VS Code, use the PlatformIO buttons in the bottom status bar:
 The first build downloads and compiles dependencies, so it takes longer. A
 successful build ends with `SUCCESS`.
 
-From a PlatformIO Core terminal, you can also build from the repository root:
 
-```powershell
-pio run --project-dir firmware
-```
 
 To upload:
 
 1. Connect the NodeMCU-32S using a USB data cable.
 2. Confirm that Windows assigns it a COM port.
-3. Stop any serial monitor that is using the port.
-4. Click the PlatformIO **Upload** arrow.
-5. If the board does not enter download mode automatically, hold **BOOT** until writing starts.
+3. Click the PlatformIO **Upload** arrow.
+4. If the board does not enter download mode automatically, hold **BOOT** until writing starts.
 
 The serial monitor uses **115200 baud** and displays measurements, Wi-Fi state,
 and Arduino Cloud connection messages.
@@ -137,5 +130,4 @@ dataset requirements.
 ## Thesis
 
 The thesis source is under `thesis/`. Its main document is `thesis/main.tex`
-and it uses pdfLaTeX. See the [thesis build guide](thesis/README.md) for local
-and Overleaf instructions.
+and it uses pdfLaTeX. See the [thesis build guide](thesis/README.md) for more info.
