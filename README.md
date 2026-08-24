@@ -130,4 +130,4 @@ dataset requirements.
 ## Thesis
 
 The thesis source is under `thesis/`. Its main document is `thesis/main.tex`
-and it uses pdfLaTeX. See the [thesis build guide](thesis/README.md) for more info.
+and it uses pdfLaTeX.
