@@ -10,3 +10,4 @@
 *.lck
 ~*.kicad_*
 *-backups/
+*fp-lib-table
