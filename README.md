@@ -1,10 +1,10 @@
 # Soil Moisture Sensor Thesis
 
-This repository contains the complete soil-moisture measurement project:
+This repository contains the omplete soil-moisture measurement project:
 
 - ESP32 firmware for impedance measurement, Wi-Fi provisioning, and Arduino Cloud publishing.
 - KiCad schematic and PCB sources for the measurement hardware.
-- R scripts used to analyze impedance and phase measurements.
+- R scripts used to analyze the soil samples examined in impedance spectroscopy 
 - The editable LaTeX thesis and its figures.
 
 ![Assembled soil moisture sensor](thesis/figures/soil.jpg)
@@ -14,12 +14,12 @@ This repository contains the complete soil-moisture measurement project:
 ```text
 .
 |-- firmware/                           ESP32 PlatformIO project
-|   |-- platformio.ini                  Board, framework, and library settings
+|   |-- include/                        Cloud definitions and local secrets
 |   |-- src/                            Application code
-|   `-- include/                        Cloud definitions and local secrets
+|   `-- platformio.ini                  Board, framework, and library settings        
 |-- analysis/impedance_spectroscopy/    R analysis scripts and usage notes
 |-- PCB/kicad/soil-board/               KiCad schematic, PCB, and project files
-`-- thesis/                             LaTeX sources, bibliography, and figures
+|-- thesis/                             LaTeX sources, bibliography, and figures
 ```
 
 The firmware is a self-contained PlatformIO project under `firmware/`. Open
