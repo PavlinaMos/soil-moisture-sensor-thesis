@@ -62,7 +62,7 @@ library versions pinned in `firmware/platformio.ini`.
 ## Configure private secrets
 
 Copy `firmware/include/arduino_secrets.h`, then add the matching Arduino Cloud
-device key. Don't commit this file or share its contents.
+device key. Don't share its contents.
 
 ```cpp
 #pragma once
@@ -73,7 +73,7 @@ device key. Don't commit this file or share its contents.
 ```
 
 WiFiManager does not use `SECRET_SSID` or `SECRET_PASS` during normal
-operation; they remain for compatibility. `SECRET_DEVICE_KEY` is required for
+operation, they remain for compatibility. `SECRET_DEVICE_KEY` is required for
 Arduino Cloud authentication.
 
 ## Build and upload the firmware
@@ -84,8 +84,7 @@ In VS Code, use the PlatformIO buttons in the bottom status bar:
 - **Right arrow**: upload the firmware to the ESP32.
 - **Plug icon**: open the serial monitor.
 
-The first build downloads and compiles dependencies, so it takes longer. A
-successful build ends with `SUCCESS`.
+The first build downloads and compiles dependencies, so it takes longer. 
 
 
 
@@ -116,8 +115,7 @@ their time history. Cloud retention depends on the Arduino Cloud plan.
 ## Hardware design
 
 Open `PCB/kicad/soil-board/SoilBoard.kicad_pro` in KiCad. See the
-[PCB notes](PCB/kicad/soil-board/README.md) for the included sources and the
-archive cleanup performed during import.
+[PCB notes](PCB/kicad/soil-board/README.md) for more info.
 
 ## Data analysis
 
