@@ -82,10 +82,10 @@ void rememberNetwork(const String &ssid, const String &pass) {
       break;
     }
     if (storedSsid.isEmpty() && targetSlot == MAX_KNOWN_NETWORKS) {
-      targetSlot = i;
+      targetSlot = i;                                          //  slot is empty AND havent found slot yet
     }
   }
-  if (targetSlot == MAX_KNOWN_NETWORKS) {
+  if (targetSlot == MAX_KNOWN_NETWORKS) {                      //  no known Wifi AND no empty slot
     targetSlot = 0;
   }
   knownNetworks.putString(ssidKey(targetSlot).c_str(), ssid);
@@ -201,10 +201,10 @@ void loop() {
   Vphase2 = ads.computeVolts(adc0);
 
   r = 47 * pow(10, (Vmag1 - Vmag2) / 0.6);
-  du = (Vphase2 - Vphase1) / 0.01;
+  du = (Vphase1 - Vphase2) / 0.01;
   du_rad = (du * PI) / 180.0;
   Rp = r / cos(du_rad);
-  Cp = sin(du_rad) / (2 * PI * 1000000 * r);
+  Cp = - sin(du_rad) / (2 * PI * 1000000 * r);
   Cp_nF = Cp * pow(10, 9);
 
   rp = Rp;
