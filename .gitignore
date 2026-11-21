@@ -11,3 +11,15 @@
 ~*.kicad_*
 *-backups/
 *fp-lib-table
+
+*.Rhistory
+
+#TODO REVISE WHAT IS NEEDED
+dipl_data
+variations
+analysis\screenshot_of_last_fitting_with_last_experiment
+*.xlsx
+*.png
+*.csv
+*.txt
+*.zip
