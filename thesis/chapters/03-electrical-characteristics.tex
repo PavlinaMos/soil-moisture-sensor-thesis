@@ -22,11 +22,42 @@
 μοντελοποιώντας το σύστημα με ένα αντίστοιχο ηλεκτρικό κυκλωματικό
 ισοδύναμο. \cite{ref22}
 
+
+
+
+\section{Σύνθετη Μιγαδική Αντίσταση}
+
+Στα συστήματα συνεχούς ρεύματος (DC), η Εμπέδηση ταυτίζεται με την ηλεκτρική αντίσταση και ορίζεται όπως αναφέρθηκε ως ο λόγος της τάσης προς την ένταση του ρεύματος. Στα συστήματα εναλλασσόμενου ρεύματος, εκτός από την αντίσταση η εμπέδηση επηρεάζεται και από χωρητικά κι επαγωγικά φαινόμενα. Τα φαινόμενα αυτά εξαρτώνται από τη συχνότητα, με αποτέλεσμα η Εμπέδηση ή Σύθετη Αντίσταση να είναι μεταβλητή ως προς τη συχνότητα και ορίζεται ως  \cite{ref22}
+
+\[
+Z(\omega) = \frac{\tilde{V}(\omega)}{\tilde{I}(\omega)}
+\]
+
+και εάν χρησιμοποιηθεί η εξίσωση του Euler 
+
+\[
+Z(\omega) = |Z|e^{j\varphi}
+= |Z|(\cos\varphi + j\sin\varphi)
+= Z' + jZ''
+\]
+
+όπου Z'=|Z|cosφ το πραγματικό μέρος της εμπέδησης που σχετίζεται με της ωμικές απώλειες και Z''=|Z|sinφ το φανταστικό μέρος όπου σχετίζεται με τα χωρητικά κι επαγωγικά φαινόμενα. Επομένως, η ταυτόχρονη μελέτη των Z' και Z'' ως συνάρτηση της συχνότητας μέσω της φασματοσκοπίας εμπέδησης είναι απαραίτητη προκειμένου να εξαχθούν πληροφορίες σχετικά με τους διαφορετικούς μηχανισμούς που συμμετέχουν στην ηλεκτρική απόκριση του δείγματος. 
+
+
 \section{Εξοπλισμός και Μέθοδος}
 
-Για τη μελέτη της απόκρισης των δειγμάτων συναρτήσει της συχνότητας
-χρησιμοποιήθηκε ο Αναλυτής Σύνθετης Εμπέδησης (Impedance Analyzer) της
-Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξιολογήθηκαν
+Για τη μελέτη της απόκρισης των δειγμάτων συναρτήσει της συχνότητας χρησιμοποιήθηκε ο Αναλυτής Σύνθετης Εμπέδησης (Impedance Analyzer) της Keysight Technologies E4990A. Το όργανο χρησιμοποιείται για τον ηλεκτρικό χαρακτηρισμό διάφορων υλικών και τη μέτρηση ηλεκτρονικών εξαρτημάτων. Επιτρέπει τη μέτρηση μεγεθών όπως η σύνθετη αντίσταση, η χωρητικότητα κι επαγωγή σε συνάρτηση με τη συχνότητα. Το εύρος λειτουργίας του εκτείνεται στην περιοχή από 20 Hz έως 20 MHz και προσφέρει σύμφωνα με τον κατασκευαστή βασική ακρίβεια μέτρησης σύνθετης αντίστασης ±0,08\%, με τυπική τιμή ±0,045\%  
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{figures/analyzer.png}
+  \caption{Συχνοτική απόκριση δείγματος με gwc 10\% από 20Hz έως 1,5MHz.}
+  \label{fig:impedance-magnitude}
+\end{figure}
+
+
+\par Το εύρος συχνοτήτων που αξιολογήθηκαν
 είναι από 20Hz έως 1.5MHz, συχνότητες που θεωρήθηκαν ασφαλείς μετά τη
 δοκιμή γνωστών στοιχείων. Με στόχο τη μέγιστη ακρίβεια, η βαθμονόμιση
 του οργάνου και οι μετρήσεις έγιναν τμηματικά στο φάσμα της συχνότητας,
@@ -34,8 +65,8 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 και των καλωδίω, και με στόχο να αυξηθεί ο αριθμός των συνολικών
 δειγμάτων. Η τάση που εφαρμόζει ο αναλυτής είναι 500mVrms, τάση που
 οφείλει να είναι χαμηλή ώστε να μην υπερφορτώνεται το δείγμα. Ο τύπος
-του δείγματος που χρησιμοποιήθηκε εντάσσεται στην κατηγορία Sandy Loam.
-\cite{ref31}
+του δείγματος που χρησιμοποιήθηκε εντάσσεται στην κατηγορία Sandy Loam
+\cite{ref31}. Η ανάλυση των δεδομένων έγινε με τη χρήση της γλώσσα R στο περιβάλλον R Studio.
 
 \section{Απόκριση Συστήματος}
 
@@ -48,6 +79,9 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 γεγονός που υποδηλώνει ότι στην περιοχή αυτή το \textbar Z\textbar{}
 επηρεάζεται λιγότερο από την εφαρμοζόμενη συχνότητα.
 
+
+
+
 Η πόλωση των ηλεκτροδίων είναι ένα φαινόμενο που εμφανίζεται μεταξύ
 ηλεκτροδίου-μέσου όταν εφαρμόζεται ηλεκτρομαγνητικό πεδίο και δεν
 υπάρχει πραγματική μεταφορά φορτίου. Τα φορτία συσσωρεύονται αλλά δεν
@@ -57,14 +91,14 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.64\textwidth]{impedance-magnitude-vs-frequency.png}
+  \includegraphics[width=0.7\textwidth]{impedance-magnitude-vs-frequency.png}
   \caption{Συχνοτική απόκριση δείγματος με gwc 10\% από 20Hz έως 1,5MHz.}
   \label{fig:impedance-magnitude}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.66\textwidth]{electrode-polarization.png}
+  \includegraphics[width=0.7\textwidth]{electrode-polarization.png}
   \caption{Το φαινόμενο της Ηλεκτρικής Διπλοστιβάδας μεταξύ ηλεκτροδίου και μέσου. \cite{ref30}}
   \label{fig:electrode-polarization}
 \end{figure}
@@ -76,7 +110,7 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.64\textwidth]{phase-vs-frequency.png}
+  \includegraphics[width=0.7\textwidth]{phase-vs-frequency.png}
   \caption{Διάγραμμα φάσης-Συχνότητας για δείγμα με gwc 10\% από 20Hz έως 1,5MHz.}
   \label{fig:phase-frequency}
 \end{figure}
@@ -86,14 +120,11 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 συχνότητα αυξάνεται από τα δεξιά προς τα αριστερά, στον Χ-άξονα
 απεικονίζεται η πραγματική συνιστώσα Z' που εκφράζει την ωμική
 συμπεριφορά του συστήματος και στον Υ-άξονα η φανταστική συνιστώσα
--Ζ'\,' που εκφράζει είτε τη χωρητική είτε την επαγωγική συμπεριφορά,
-όπου
-
-\[Z' = |Z|\cos t\quad\text{και}\quad Z'' = |Z|\sin t\]
+-Ζ'\,' που εκφράζει είτε τη χωρητική είτε την επαγωγική συμπεριφορά.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.64\textwidth]{nyquist-full.png}
+  \includegraphics[width=0.7\textwidth]{nyquist-full.png}
   \caption{Διάγραμμα Nyquist για δείγμα με gwc 10\% από 20Hz έως 1,5MHz.}
   \label{fig:nyquist-full}
 \end{figure}
@@ -110,21 +141,19 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 πόλωσης των μορίων, και κυρίως των διπόλων του νερού, που έχουν υψηλή
 διηλετρική σταθερά. Στο \figref{fig:nyquist-trimmed} φαίνεται ευκρινέστερα η απόκριση του
 δείγματος μετά την αφαίρεση των συχνοτήτων όπου κυριαρχεί η πόλωση των
-ηλεκτροδίων.
-
-Στο \figref{fig:nyquist-moisture} φαίνεται το διάγραμμα Nyquist για τρία ποσοστά υγρασίας
+ηλεκτροδίων. Στο \figref{fig:nyquist-moisture} φαίνεται το διάγραμμα Nyquist για τρία ποσοστά υγρασίας
 στο ίδιο δείγμα, με gwc 7\%, 10\% και 16\% αντίστοιχα.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.64\textwidth]{nyquist-trimmed.png}
+  \includegraphics[width=0.67\textwidth]{nyquist-trimmed.png}
   \caption{Διάγραμμα Nyquist για δείγμα με gwc 10\% εξαιρώντας τα πολωτικά φαινόμενα.}
   \label{fig:nyquist-trimmed}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.64\textwidth]{nyquist-moisture-comparison.png}
+  \includegraphics[width=0.7\textwidth]{nyquist-moisture-comparison.png}
   \caption{Διάγραμμα Nyquist για δείγματα με gwc 7\%, 10\% και 16\%.}
   \label{fig:nyquist-moisture}
 \end{figure}
@@ -176,13 +205,20 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 Για την αξιολόγηση της ακρίβειας των θεωρητικών μοντέλων συγκριτικά με
 τα πραγματικά δεδομένα έχει υπολογιστεί το Μέσο Τετραγωνικό Σφάλμα του
 κάθε μοντέλου στις δύο παραπάνω περιοχές για μία μέση τιμή υγρασίας
-(s10\%) (\tabref{tab:model-mse}).
+s10\% (\tabref{tab:model-mse}), το οποίο ορίζεται ως 
+
+\[
+\mathrm{MSE} = \frac{1}{N}\sum_{i=1}^{N}
+\left(\theta_i^{\mathrm{meas}}-\theta_i^{\mathrm{ref}}\right)^2
+\]
+
+όπου Ν ο αριθμός των δειγμάτων για το κάθε μοντέλο, \(\theta_i^{\mathrm{meas}}\) η μετρούμενη τιμή υγρασίας και \(\theta_i^{\mathrm{ref}}\) η αντίστοιχη τιμή αναφοράς.
 
 \begin{table}[H]
   \centering
   \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X *{4}{>{\centering\arraybackslash}X}}
     \toprule
-      & \multicolumn{2}{c}{Z MSE} & \multicolumn{2}{c}{Z Phase} \\
+      & \multicolumn{2}{c}{Z MSE} & \multicolumn{2}{c}{Phase MSE} \\
     \cmidrule(lr){2-3}\cmidrule(lr){4-5}
     \textbf{Ζώνη συχνοτήτων} & \textbf{Μοντέλο 1} & \textbf{Μοντέλο 2} & \textbf{Μοντέλο 1} & \textbf{Μοντέλο 2} \\
     \midrule
@@ -201,48 +237,46 @@ Keysight Technologies E4990A. Το εύρος συχνοτήτων που αξι
 είναι το βέλτιστο για τη προσομοίωση του μέτρου της σύνθετης αντίστασης,
 ενώ η διαφορά των δύο σφαλμάτων για τη φάση είναι εξαιρετικά μικρή.
 
-Επομένως, το δείγμα δεν έχει μία δεδομένη συμπεριφορά, αλλά μπορεί να
-μεταβάλλεται στο φάσμα της συχνότητας. Για την αξιοποίηση ενός μοντέλου
-είναι απαραίτητη η αξιολόγησή του σε ένα στενό φάσμα κοντά στη συχνότητα
-που θα εξεταστεί.
+Επομένως, προκύπτει πως το δείγμα δεν έχει μία δεδομένη ηλεκτρική συμπεριφορά σε όλο το φάσμα συχνοτήτων, αλλά μπορεί να μεταβάλλεται ανάλογα με το ύψος της συχνότητας. Συνπεώς, για την αξιοποίηση ενός μοντέλου είναι απαραίτητη η αξιολόγησή του σε ένα στενό φάσμα κοντά στη συχνότητα ενδιαφέροντως όπου πρόκειται να εξεταστεί.
 
-Παρακάτω φαίνεται η έντονη πόλωση των ηλεκτροδίων από τον αναλυτή στην
-περιοχή 20Hz-1kHz, καθώς και η απόκριση του δείγματος συγκριτικά με τα
-θεωρητικά μοντέλα στις δύο περιοχές συχνοτήτων.
+
+Στο Σχήμα 3.10, παρατηρείται η επίδραση του φαινομένου της πόλωσης των ηλεκτροδίων που διαπιστώθηκε στην και στην προηγούμενη ενότητα, στην περιοχή συχνοτήτων από 20 Hz έως  περίπου 1 kHz, όπου σταδιακά έχει εξασθενίσει.
+
+Στα σχήματα 3.11 έως 3.14 παρουσιάζεται η απόκριση του υπο εξέταση δείγματος συγκριτικά με τα αντίστοιχα θεωρητικά μοντέλα, στις δύο περιοχές συχνοτήτων.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.79\textwidth]{electrode-polarization-analyzer-20hz-1khz.png}
+  \includegraphics[width=0.8\textwidth]{electrode-polarization-analyzer-20hz-1khz.png}
   \caption{Η απόκριση του μέτρου της εμπέδησης και της φάσης σε χαμηλές συχνότητες από 20Hz έως 1kHz με εμφανή την πόλωση των ηλεκτροδίων.}
   \label{fig:electrode-polarization-analyzer}
 \end{figure}
 
-\clearpage
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.80\textwidth]{model-1-fit-100-200khz.png}
+  \includegraphics[width=0.8\textwidth]{model-1-fit-100-200khz.png}
   \caption{Πραγματική και θεωρητική μεταβολή του μέτρου της εμπέδησης και της φάσης για το μοντέλο 1 από 100kHz έως 200kHz.}
   \label{fig:model1-low-fit}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.80\textwidth]{model-2-fit-100-200khz.png}
+  \includegraphics[width=0.8\textwidth]{model-2-fit-100-200khz.png}
   \caption{Πραγματική και θεωρητική μεταβολή του μέτρου της εμπέδησης και της φάσης για το μοντέλο 2 από 100kHz έως 200kHz.}
   \label{fig:model2-low-fit}
 \end{figure}
 
-\clearpage
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.80\textwidth]{model-1-fit-1-1p5mhz.png}
+  \includegraphics[width=0.8\textwidth]{model-1-fit-1-1p5mhz.png}
   \caption{Πραγματική και θεωρητική μεταβολή του μέτρου της εμπέδησης και της φάσης για το μοντέλο 1 από 1MHz έως 1.5MHz.}
   \label{fig:model1-high-fit}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.80\textwidth]{model-2-fit-1-1p5mhz.png}
+  \includegraphics[width=0.8\textwidth]{model-2-fit-1-1p5mhz.png}
   \caption{Πραγματική και θεωρητική μεταβολή του μέτρου της εμπέδησης και της φάσης για το μοντέλο 2 από 1MHz έως 1.5MHz.}
   \label{fig:model2-high-fit}
 \end{figure}
