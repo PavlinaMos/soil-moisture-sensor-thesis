@@ -20,6 +20,7 @@ variations
 analysis\screenshot_of_last_fitting_with_last_experiment
 *.xlsx
 *.png
+!/thesis/figures/*.png
 *.csv
 *.txt
 *.zip
