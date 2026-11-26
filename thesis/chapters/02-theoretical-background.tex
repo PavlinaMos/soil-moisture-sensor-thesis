@@ -128,7 +128,7 @@ Content ή GWC) και την \textbf{ογκομετρική} περιεκτικ
 μάζας εδάφους, δηλαδή γραμμάρια νερού ανά γραμμάρια εδάφους και
 υπολογίζεται σύμφωνα με τον παρακάτω τύπο
 
-\[w = \frac{M_{moist}\,(g) - M_{dry}\,(g)}{M_{dry}\,(g)}\]
+\[w = \frac{M_{moist}\,(g) - M_{dry}\,(g)}{M_{dry}\,(g)} \tag{2.1}\]
 
 Για τον υπολογισμό του ζυγίζεται αρχικά ένα δείγμα υγρού εδάφους και στη
 συνέχεια εφόσον ξηρανθεί και έχει εξατμιστεί όλη η ποσότητα του νερού,
@@ -140,7 +140,7 @@ Content ή GWC) και την \textbf{ογκομετρική} περιεκτικ
 νερού προς το συνολικό όγκο του εδαφικού δείγματος, όπως φαίνεται από
 τον παρακάτω τύπο
 
-\[\theta = \frac{V_{water}\,\left( m^{3} \right)}{V_{soil}\,\left( m^{3} \right)}\]
+\[\theta = \frac{V_{water}\,\left( m^{3} \right)}{V_{soil}\,\left( m^{3} \right)}\tag{2.2}\]
 
 Η ογκομετρική περιεκτικότητα προκύπτει είτε έμμεσα από τη βαρυμετρική,
 είτε χρησιμοποιείται κάποιος αισθητήρας για τον υπολογισμό της. Οι
@@ -156,13 +156,13 @@ Content ή GWC) και την \textbf{ογκομετρική} περιεκτικ
 γινόμενο της βαρυμετρικής με τη φαινόμενη ξηρή πυκνότητα του εδάφους
 ρ\textsubscript{b} (dry bulk density)
 
-\[\theta = w\,\rho_{b}\]
+\[\theta = w\,\rho_{b} \tag{2.3}\]
 
 όπου ρ\textsubscript{b} ορίζεται ως ο λόγος της μάζας του ξηρού εδάφους
 (m\textsubscript{d}) προς το συνολικό όγκο του εδαφικού δείγματος (
 V\textsubscript{soil} ) \cite{ref05,ref06}
 
-\[\rho_{b} = \frac{m_{d}\,(g)}{V_{soil}\,\left( cm^{3} \right)}\]
+\[\rho_{b} = \frac{m_{d}\,(g)}{V_{soil}\,\left( cm^{3} \right)} \tag{2.4}\]
 
 \section{Ηλεκτρομαγνητική Συμπεριφορά Εδάφους}
 
@@ -194,24 +194,24 @@ V\textsubscript{soil} ) \cite{ref05,ref06}
 στη διέλευση του ηλεκτρικού ρεύματος, κι εκφράζεται από το νόμο του Οhm
 ως:
 
-\[R = \frac{V}{I},\quad(\Omega)\]
+\[R = \frac{V}{I},\quad(\Omega) \tag{2.5}\]
 
 όπου V είναι η διαφορά δυναμικού στα άκρα του αγωγού σε Volt και I η
 ένταση του ρεύματος σε Ampere. Επειδή ωστόσο η αντίσταση εξαρτάται άμεσα
 από τη γεωμετρία του αγωγού, εκφράζεται επίσης από τη σχέση:
 
-\[R = \rho\frac{L}{A},\quad(\Omega)\]
+\[R = \rho\frac{L}{A},\quad(\Omega)\tag{2.6}\]
 
 όπου ρ η ειδική αντίσταση του αγωγού σε Ω*m, L το μήκος του αγωγού και Α
 το εμβαδό της διατομής του. Το αντίστροφο της αντίστασης ονομάζεται
 ηλεκτρική αγωγιμότητα και συμβολίζεται ως \cite{ref14}:
 
-\[G = \frac{1}{R},\quad(Siemens)\]
+\[G = \frac{1}{R},\quad(Siemens)\tag{2.7}\]
 
 ενώ το αντίστροφο της ειδικής αντίστασης ονομάζεται ειδική ηλεκτρική
 αγωγιμότητα και συμβολίζεται ως \cite{ref13}:
 
-\[\sigma = \frac{1}{\rho},\quad(Siemens/m)\]
+\[\sigma = \frac{1}{\rho},\quad(Siemens/m)\tag{2.8}\]
 
 Η ειδική ηλεκτρική αγωγιμότητα χρησιμοποιείται συχνά ως δείκτης για τη
 συγκέντρωση των διαλυμένων αλάτων στο έδαφος (αλατότητα). Η αγωγιμότητα
@@ -237,16 +237,16 @@ V\textsubscript{soil} ) \cite{ref05,ref06}
 ρ\textsubscript{α}. Για απόσταση a και βάθος c, ο τύπος που δίνει το
 ρ\textsubscript{α} είναι \cite{ref11}:
 
-\[\rho_{\alpha} = \frac{4\pi\alpha R}{1 + \frac{2\alpha}{\sqrt{\alpha^{2} + 4c^{2}}} - \frac{\alpha}{\sqrt{\alpha^{2} + c^{2}}}}\]
+\[\rho_{\alpha} = \frac{4\pi\alpha R}{1 + \frac{2\alpha}{\sqrt{\alpha^{2} + 4c^{2}}} - \frac{\alpha}{\sqrt{\alpha^{2} + c^{2}}}} \tag{2.9}\]
 
 Επομένως,
 
-\[EC_{\alpha} = \sigma_{\alpha} = \frac{1}{\rho_{\alpha}} = \frac{1 + \frac{2\alpha}{\sqrt{\alpha^{2} + 4c^{2}}} - \frac{\alpha}{\sqrt{\alpha^{2} + c^{2}}}}{4\pi\alpha R}\]
+\[EC_{\alpha} = \sigma_{\alpha} = \frac{1}{\rho_{\alpha}} = \frac{1 + \frac{2\alpha}{\sqrt{\alpha^{2} + 4c^{2}}} - \frac{\alpha}{\sqrt{\alpha^{2} + c^{2}}}}{4\pi\alpha R} \tag{2.10}\]
 
 Εάν θεωρήσουμε το βάθος των ηλεκτροδίων πολύ μικρότερο από τη μεταξύ
 τους απόσταση, ο παραπάνω τύπος μπορεί να απλοποιηθεί ως εξής \cite{ref12}:
 
-\[\rho_{\alpha} = 2\pi\alpha R\]
+\[\rho_{\alpha} = 2\pi\alpha R \tag{2.11}\]
 
 \subsection{Θεωρία των Διηλεκτρικών}
 
@@ -266,7 +266,7 @@ V\textsubscript{soil} ) \cite{ref05,ref06}
 ορίζεται ως το πηλίκο του ηλεκτρικού φορτίου Q του πυκνωτή ως προς την
 τάση V μεταξύ των οπλισμών του πυκνωτή \cite{ref15},
 
-\[C = \frac{Q\,(Coulomb)}{V\,(Volt)},\quad Farad\]
+\[C = \frac{Q\,(Coulomb)}{V\,(Volt)},\quad Farad \tag{2.12}\]
 
 Ο παραπάνω τύπος εφαρμόζεται για κάθε μορφής πυκνωτή, ωστόσο η
 χωρητικότητα εξαρτάται από το σχήμα, τις διαστάσεις, την απόσταση των
@@ -274,7 +274,7 @@ V\textsubscript{soil} ) \cite{ref05,ref06}
 οπλισμών. Γι'αυτό το λόγο, για έναν επίπεδο πυκνωτή με αέρα ή κενό ως
 διηλεκτρικό, η χωρητικότητα δίνεται από τη σχέση \cite{ref28}
 
-\[C = \frac{\varepsilon_{0}\, A}{d},\quad F\quad\quad\text{(10)}\]
+\[C = \frac{\varepsilon_{0}\, A}{d},\quad F \tag{2.13}\]
 
 όπου $\varepsilon_{0}=8{,}85\cdot 10^{-12}\,\mathrm{C^2/(N\,m^2)}$ η \textbf{απόλυτη
 διηλεκτρική σταθερά} του κενού, Α το εμβαδόν του οπλισμού και d η
@@ -287,12 +287,12 @@ V\textsubscript{soil} ) \cite{ref05,ref06}
 \(\overrightarrow{E}\left( \frac{V}{m} \right)\) στο εσωτερικό του
 \cite{ref16}
 
-\[\varepsilon = \frac{\overrightarrow{D}}{\overrightarrow{E}},\quad F/m\]
+\[\varepsilon = \frac{\overrightarrow{D}}{\overrightarrow{E}},\quad F/m \tag{2.14}\]
 
 Εάν μεταξύ των οπλισμών υπάρχει διηλεκτρικό υλικό, τότε η εξίσωση (10)
 μετατρέπεται σε \cite{ref15,ref28}
 
-\[C = \frac{\varepsilon_{0}\,\varepsilon_{r}\, A}{d},\quad F\]
+\[C = \frac{\varepsilon_{0}\,\varepsilon_{r}\, A}{d},\quad F \tag{2.15}\]
 
 όπου ε\textsubscript{r} η \textbf{σχετική διηλεκτρική σταθερά ή σχετική
 διηλεκτρική διαπερατότητα} του υλικού.
@@ -310,7 +310,7 @@ permittivity) και λαμβάνει μία δεδομένη τιμή που ε
 Η σχετική διηλεκτρική σταθερά συνδέεται με την απόλυτη διηλεκτρική
 σταθερά μέσω της σχέσης \cite{ref15}
 
-\[\varepsilon_{r} = \frac{\varepsilon}{\varepsilon_{0}}\]
+\[\varepsilon_{r} = \frac{\varepsilon}{\varepsilon_{0}} \tag{2.16}\]
 
 \begin{figure}[H]
   \centering
@@ -327,18 +327,18 @@ permittivity) και λαμβάνει μία δεδομένη τιμή που ε
 πεδίο μπορεί να περιγραφεί από την \textbf{απόλυτη} \textbf{ηλεκτρική
 μιγαδική διαπερατότητα ε* (absolute permittivity)} \cite{ref18}:
 
-\[\varepsilon^{*}(\omega) = \varepsilon'(\omega) + j\varepsilon_{eff}''(\omega)\]
+\[\varepsilon^{*}(\omega) = \varepsilon'(\omega) + j\varepsilon_{eff}''(\omega) \tag{2.17}\]
 
 και συνδέεται με τη σχετική διηλεκτρική διαπερατότητα με τη σχέση:
 
-\[\varepsilon^{*}(\omega) = \varepsilon_{0}\,\varepsilon_{r}^{*}(\omega)\]
+\[\varepsilon^{*}(\omega) = \varepsilon_{0}\,\varepsilon_{r}^{*}(\omega) \tag{2.18}\]
 
 όπου \(\varepsilon_{0}\) η ηλεκτρική διαπερατότητα του κενού. Από τα
 παραπάνω προκύπτει η μιγαδική \textbf{σχετική ηλεκτρική διαπερατότητα} η
 οποία αποτελεί αδιάστατο μέγεθος και περιγράφει την αλληλεπίδραση ενός
 υλικού σε σχέση με το πεδίο \cite{ref18,ref19}:
 
-\[\varepsilon_{r}(\omega) = \varepsilon_{r}'(\omega) + j\varepsilon_{r,eff}''(\omega)\]
+\[\varepsilon_{r}(\omega) = \varepsilon_{r}'(\omega) + j\varepsilon_{r,eff}''(\omega) \tag{2.19}\]
 
 To εr'(ω) αποτελεί το πραγματικό μέρος της μιγαδικής διαπερατότητας και
 εκφράζει το ποσό της ενέργειας που έχει αποθηκευτεί στο υλικό από το
@@ -347,7 +347,7 @@ To εr'(ω) αποτελεί το πραγματικό μέρος της μιγ�
 διηλεκτρικά όπου συνυπάρχουν οι απώλειες λόγω πόλωσης και ηλεκτιρκής
 αγωγιμότητας, εκφράζονται ως \cite{ref18,ref19}:
 
-\[\varepsilon_{r,eff}''(\omega) = \varepsilon_{r,d}''(\omega) + \frac{\sigma}{\omega\,\varepsilon_{0}}\]
+\[\varepsilon_{r,eff}''(\omega) = \varepsilon_{r,d}''(\omega) + \frac{\sigma}{\omega\,\varepsilon_{0}} \tag{2.20}\]
 
 όπου σ(S/m) η DC αγωγιμότητα και ε\textsubscript{rd}'\,' το φανταστικό
 μέρος της σχετικής διαπερατότητας που εκφράζει τις απώλειες λόγω των
@@ -358,9 +358,9 @@ To εr'(ω) αποτελεί το πραγματικό μέρος της μιγ�
 λαμβάνοντας υπόψη ότι τα μεγέθη αυτά εξαρτώνται από τη συχνότητα, χάριν
 απλούστευσης χρησιμοποιείται η έκφραση:
 
-\[\varepsilon_{r}^{*} = \varepsilon_{r}' + j\varepsilon_{r}''\]
+\[\varepsilon_{r}^{*} = \varepsilon_{r}' + j\varepsilon_{r}'' \tag{2.21}\]
 
-\[\varepsilon_{r}'' = \frac{\sigma}{\omega\,\varepsilon_{0}}\]
+\[\varepsilon_{r}'' = \frac{\sigma}{\omega\,\varepsilon_{0}} \tag{2.22}\]
 
 \subsection{Το Υγρό Έδαφος ως Διηλεκτρικό}
 
@@ -564,7 +564,7 @@ To εr'(ω) αποτελεί το πραγματικό μέρος της μιγ�
 να αποτελεί η εξίσωση \textbf{Topp}, και περιγράφεται από τη συνάρτηση
 \cite{ref02}
 
-\[\theta = - 0.053 + 0.0292K - 5.5 \times 10^{- 4}K^{2} + 4.3 \times 10^{- 6}K^{3}\]
+\[\theta = - 0.053 + 0.0292K - 5.5 \times 10^{- 4}K^{2} + 4.3 \times 10^{- 6}K^{3} \tag{2.23}\]
 
 όπου θ η ογκομετρική περιεκτικότητα του εδάφους σε νερό και Κ η
 πραγματική συνιστώσα της σχετικής ηλεκτρικής διαπερατότητας.

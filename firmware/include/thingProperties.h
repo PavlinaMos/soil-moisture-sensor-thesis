@@ -10,10 +10,12 @@ const char DEVICE_KEY[] = SECRET_DEVICE_KEY;
 
 float rp;
 float cp;
+float theta; // first theta for cloud
 
 inline void initProperties() {
   ArduinoCloud.setBoardId(DEVICE_LOGIN_NAME);
   ArduinoCloud.setSecretDeviceKey(DEVICE_KEY);
   ArduinoCloud.addProperty(rp, READ, 10 * SECONDS, NULL);
   ArduinoCloud.addProperty(cp, READ, 10 * SECONDS, NULL);
+ // ArduinoCloud.addProperty(theta, READ, 10 * SECONDS, NULL);
 }
